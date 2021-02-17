@@ -50,5 +50,5 @@ class FileStorage():
                 Objects[key]['__class__'] = "User"
                 classes["User"](**objects[User.9324398432])
                 User(**object[User.9324398432])'''
-        except:
+        except FileNotFoundError:
             pass
