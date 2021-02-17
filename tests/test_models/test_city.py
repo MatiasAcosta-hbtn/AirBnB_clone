@@ -35,3 +35,7 @@ class TestCity(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(City.__doc__)
         self.assertIsNotNone(City.__init__.__doc__)
+
+
+if __name__ == "__main__":
+    unittest.main()

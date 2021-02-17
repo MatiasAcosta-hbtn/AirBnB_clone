@@ -49,3 +49,6 @@ class TestPlace(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(Place.__doc__)
         self.assertIsNotNone(Place.__init__.__doc__)
+
+if __name__ == "__main__":
+    unittest.main()

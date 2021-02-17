@@ -40,3 +40,6 @@ class TestState(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(State.__doc__)
         self.assertIsNotNone(State.__init__.__doc__)
+
+if __name__ == "__main__":
+    unittest.main()
