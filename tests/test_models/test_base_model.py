@@ -40,10 +40,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(BaseModel.__init__.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
 
-    def test_id(self):
-        """test if uuid is a string"""
-        new = BaseModel()
-        self.assertIsInstance(new.id, str)
+    """def test_id(self):
+        test if uuid is a string
+        new = Basemodel()
+        self.assertIsInstance(new, str)"""
 
     def test_created_at(self):
         """test created_at format"""
