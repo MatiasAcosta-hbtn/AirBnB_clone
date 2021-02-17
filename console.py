@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
         based or not on the class name
         '''
         new_list = []
-        arg = line.split() 
+        arg = line.split()
         objs = storage.all()
         if len(arg) == 0:
             for val in objs.values():
@@ -76,10 +76,10 @@ class HBNBCommand(cmd.Cmd):
         elif arg[0] in HBNBCommand.class_list:
             for class_key in objs:
                 if arg[0] in class_key:
-                    new_list.append(str(objs[class_key]).__str__())
+                    new_list.append(objs[class_key].__str__())
             print(new_list)
         else:
-            print('** class doesn\'t exist **')
+            print("** class doesn't exist **")
 
     def do_destroy(self, line):
         """Deletes an instance
@@ -105,20 +105,18 @@ class HBNBCommand(cmd.Cmd):
         """updates an instance based on the class name and id"""
         objs = storage.all()
         scape = ["\"", "\'"]
-        if line != "":
+        if line != "" or len(line) != 0:
             args = line.split()
             if args[0] not in HBNBCommand.class_list:
                 print("** class doesn't exist **")
             if len(args) == 1:
                 print("** instance id missing **")
+                return False
             if len(args) == 2:
-                key = args[0] + "." + args[1]
-                if key in objs:
-                    print("** attribute name missing **")
-                else:
-                    print("** no instance found **")
+                print("** attribute name missing **")
             if len(args) == 3:
                 print("** value missing **")
+                return False
             if len(args) >= 4:
                 key = args[0] + "." + args[1]
                 if key in objs:
@@ -128,10 +126,9 @@ class HBNBCommand(cmd.Cmd):
                         else:
                             setattr(objs[key], args[2], str(args[3]))
                         storage.save()
-                    else:
-                        print("No se puede editar")
                 else:
                     print("** no instance found **")
+                    return False
         else:
             print("** class name missing **")
 
