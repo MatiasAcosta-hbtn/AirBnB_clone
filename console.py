@@ -144,22 +144,26 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """In case to not found the command this func is executed"""
-        functions = {"all()": HBNBCommand.do_all, "count()": HBNBCommand.count}
+        functions = {"all": HBNBCommand.do_all, "count": HBNBCommand.count}
+        functions_parameters = {"show": HBNBCommand.do_show}
         try:
             args = line.split(".")
-            func = ""
+            name_func = ""
             func_id = ""
             for index, letter in enumerate(args[1]):
                 if letter == "(":
-                    func = args[1][0:index] + "()"
-                    func_id = args[1][index + 2: -2]
+                    name_func = args[1][0:index]
                     break
-            if func in functions:
-                functions[func](self, args[0])
+            if name_func in functions:
+                functions[name_func](self, args[0])
+            elif name_func in functions_parameters:
+                line = args[0] + " " + args[1][index + 2 : -2]
+                functions_parameters[name_func](self, line)
             else:
                 print("*** Unknown syntax: {}".format(line))
         except:
             print("*** Unknown syntax: {}".format(line))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
