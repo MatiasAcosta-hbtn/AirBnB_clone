@@ -6,6 +6,7 @@ from datetime import datetime
 from uuid import uuid4
 import pep8
 
+
 class TestBaseModel(unittest.TestCase):
     """ test the base model class"""
 
