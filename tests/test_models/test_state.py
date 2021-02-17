@@ -31,9 +31,9 @@ class TestState(unittest.TestCase):
         self.assertTrue(hasattr(new, "updated_at"))
         self.assertTrue(hasattr(new, "name"))
         self.assertFalse(hasattr(new, "state_id"))
-        self.asserEqual(type(new.name) str)
-        self.asserNotEqual(type(new.name) int)
-        self.asserNotEqual(type(new.name) list)
+        self.assertEqual(type(new.name), str)
+        self.assertNotEqual(type(new.name), int)
+        self.assertNotEqual(type(new.name), list)
 
     def test_documentation(self):
         """Check documentation"""
