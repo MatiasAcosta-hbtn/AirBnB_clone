@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
 
-    def default(self, line):
+    '''def default(self, line):
         """In case to not found the command this func is executed"""
         functions = {"all()": HBNBCommand.do_all, "count()": HBNBCommand.count}
         try:
@@ -162,7 +162,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("*** Unknown syntax: {}".format(line))
         except:
-            print("*** Unknown syntax: {}".format(line))
+            print("*** Unknown syntax: {}".format(line))'''
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
