@@ -20,11 +20,12 @@ class TestState(unittest.TestCase):
         self.assertNotEqual(new, new2)
         self.assertNotEqual(new.id, new2.id)
         self.assertEqual(new.__str__(), "[{}] ({}) {}".format
-                                      (new.__class__.__name__,
-                                      new.id, new.__dict__))
+                                        (new.__class__.__name__,
+                                         new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
 
     def test_attr(self):
+        """Test attributes of the instance"""
         new = State()
         self.assertTrue(hasattr(new, "id"))
         self.assertTrue(hasattr(new, "created_at"))

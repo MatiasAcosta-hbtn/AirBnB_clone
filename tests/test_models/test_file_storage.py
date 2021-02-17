@@ -7,3 +7,6 @@ import pep8
 
 class TestFileStorage(unittest.TestCase):
     """Test of Amenity_class"""
+
+    def test_FileStorage(self):
+        pass

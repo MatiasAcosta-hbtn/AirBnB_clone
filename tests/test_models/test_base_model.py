@@ -4,6 +4,7 @@ import unittest
 from models.base_model import BaseModel
 import pep8
 
+
 class TestBaseModel(unittest.TestCase):
     """Test of Base Model class"""
 
@@ -18,8 +19,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(new, new2)
         self.assertNotEqual(new.id, new2.id)
         self.assertEqual(new.__str__(), "[{}] ({}) {}".format
-                                      (new.__class__.__name__,
-                                      new.id, new.__dict__))
+                                        (new.__class__.__name__,
+                                         new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
 
     def test_attr(self):
@@ -36,4 +37,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.__init__.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
-

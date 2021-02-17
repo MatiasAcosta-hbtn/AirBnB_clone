@@ -11,6 +11,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """The console of the Airbnb project"""
     prompt = "(hbnb) "
@@ -122,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
                 key = args[0] + "." + args[1]
                 if key in objs:
                     if args[2] not in HBNBCommand.attr_list:
-                        if args[3].startswith(("\"", "'")) and args[3].endswith(("\"", "'")):
+                        if args[3][0] in scape and args[3][-1] in scape:
                             setattr(objs[key], args[2], str(args[3][1:-1]))
                         else:
                             setattr(objs[key], args[2], str(args[3]))
@@ -135,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
 
     def count(self, line):
-        """Return the amount of instances of the class""" 
+        """Return the amount of instances of the class"""
         count = 0
         objs = storage.all()
         if line in HBNBCommand.class_list:
@@ -144,11 +145,9 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
 
-    
     def default(self, line):
         """In case to not found the command this func is executed"""
-        functions = {"all()": HBNBCommand.do_all, "count()": HBNBCommand.count }
-        functionsp = {"update()": HBNBCommand.do_update, "destroy()": HBNBCommand.do_destroy}
+        functions = {"all()": HBNBCommand.do_all, "count()": HBNBCommand.count}
         try:
             args = line.split(".")
             func = ""
@@ -160,9 +159,6 @@ class HBNBCommand(cmd.Cmd):
                     break
             if func in functions:
                 functions[func](self, args[0])
-            elif func in functionsp:
-                parameter = func.rstrip("()") + " " + func_id
-                print(parameter)
             else:
                 print("*** Unknown syntax: {}".format(line))
         except:

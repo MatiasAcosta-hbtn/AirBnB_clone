@@ -13,18 +13,19 @@ class TestAmenity(unittest.TestCase):
         """Test instance of amenity class"""
         new = Amenity()
         new2 = Amenity()
+        strmethod = "[{}] ({}) {}".format(new.__class__.__name__,
+                                          new.id, new.__dict__)
         self.assertIsInstance(new, BaseModel)
         self.assertNotEqual(new, new2)
         self.assertNotEqual(new.id, new2.id)
         self.assertEqual(issubclass(new.__class__, BaseModel), True)
         self.assertIs(type(new), Amenity)
         self.assertTrue(hasattr(new, "id"))
-        self.assertEqual(new.__str__(), "[{}] ({}) {}".format
-                                      (new.__class__.__name__,
-                                      new.id, new.__dict__))
+        self.assertEqual(new.__str__(), strmethod)
         self.assertEqual(type(new.id), str)
 
     def test_attr(self):
+        """Test attributes of the class"""
         new = Amenity()
         self.assertTrue(hasattr(new, "id"))
         self.assertTrue(hasattr(new, "created_at"))
