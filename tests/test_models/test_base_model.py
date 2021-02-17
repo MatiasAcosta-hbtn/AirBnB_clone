@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/ python3
 """Tests File"""
 import unittest
 from models.base_model import BaseModel
@@ -39,8 +39,21 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.__init__.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
-        
 
+    def test_id(self):
+        """test if uuid is a string"""
+        new = Basemodel()
+        self.assertIsInstance(new, str)
+
+    def test_created_at(self):
+        """test created_at format"""
+        new = BaseModel()
+        self.assertIsInstance(new.created_at, datetime)
+
+    def test_updated_at(self):
+        """test updated_at format"""
+        new = BaseModel()
+        self.assertIsInstance(new.updated_at, datetime)
 
 if __name__ == "__main__":
     unittest.main()
