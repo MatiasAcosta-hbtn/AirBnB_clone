@@ -25,10 +25,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """Quit command to exit the program"""
-        print()
+        print("")
         return True
 
     def emptyline(self):
+        """Do nothing with an empty line"""
         pass
 
     def do_create(self, line):
@@ -46,22 +47,19 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, line):
         """Prints the string representation of an instance
         based on the class name and id"""
-        if not line:
+        objs = storage.all()
+        if not line or len(line) == 0:
             print('** class name missing **')
         else:
             arg = line.split()
             if not arg[0] in HBNBCommand.class_list:
-                print('** class doesn\'t exist **')
+                print("** class doesn't exist **")
+            elif len(arg) == 1:
+                print('** instance id missing **')
+            elif (arg[0] + "." + arg[1]) not in objs:
+                print('** no instance found **')
             else:
-                if len(arg) > 1:
-                    class_key = ''
-                    class_key = arg[0] + '.' + arg[1]
-                    if class_key in storage.all():
-                        print(storage.all()[class_key])
-                    else:
-                        print('** no instance found **')
-                else:
-                    print('** instance id missing **')
+                    print(objs[arg[0] + "." + arg[1]])
 
     def do_all(self, line):
         '''
@@ -69,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
         based or not on the class name
         '''
         new_list = []
-        arg = line.split()
+        arg = line.split() 
         objs = storage.all()
         if len(arg) == 0:
             for val in objs.values():
