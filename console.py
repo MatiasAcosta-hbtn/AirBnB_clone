@@ -85,16 +85,17 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance
         based on the class name and id"""
         objs = storage.all()
-        if line != "":
+        if line != "" or len(line) == 0:
             args = line.split()
             if args[0] not in HBNBCommand.class_list:
                 print("** class doesn't exist **")
-            if len(args) == 1:
+            elif len(args) == 1:
                 print("** instance id missing **")
-            if len(args) == 2:
+            elif len(args) == 2:
                 key = args[0] + "." + args[1]
                 if key in objs:
-                    objs.pop(key)
+                    del objs[key]
+                    storage.save()
                 else:
                     print("** no instance found **")
         else:
