@@ -37,5 +37,6 @@ class TestAmenity(unittest.TestCase):
         self.assertIsNotNone(Amenity.__doc__)
         self.assertIsNotNone(Amenity.__init__.__doc__)
 
+
 if __name__ == "__main__":
     unittest.main()
