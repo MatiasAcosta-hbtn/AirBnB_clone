@@ -42,8 +42,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_id(self):
         """test if uuid is a string"""
-        new = Basemodel()
-        self.assertIsInstance(new, str)
+        new = BaseModel()
+        self.assertIsInstance(new.id, str)
 
     def test_created_at(self):
         """test created_at format"""
