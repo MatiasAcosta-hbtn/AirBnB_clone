@@ -34,13 +34,14 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """Creates a new instance of BaseModel, saves it (to the JSON file)"""
-        if line is None or line == "":
+        if len(line) == 0 or line == "":
             print("** class name missing **")
         elif line in HBNBCommand.class_list:
-            klass = globals()[line]
+            """klass = globals()[line]
             new_inst = klass()
-            new_inst.save()
-            print(new_inst.id)
+            new_inst.save()"""
+            print(eval(line)().id)
+            storage.save()
         else:
             print("** class doesn't exist **")
 
