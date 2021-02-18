@@ -81,7 +81,7 @@ Module for Amenity Model
 * `class Amenity` includes:
   * Inherit all methods and attributes from BaseModel because it is a subclass of it
   
-  #####Public class attributes
+  ##### Public class attributes
   * name: string - empty string
 
 
@@ -90,7 +90,7 @@ Module for City Model
 * `class City` includes:
   * Inherit all methods and attributes from BaseModel because it is a subclass of it
 
-  #####Public class attributes
+  ##### Public class attributes
   * state_id: string - empty string: it will be the State.id
   * name: string - empty string
 
@@ -99,7 +99,7 @@ Module for Place Model
 * `class Place` includes:
   * Inherit all methods and attributes from BaseModel because it is a subclass of it
 
-  #####Public class attributes
+  ##### Public class attributes
   * city_id: string - empty string: it will be the City.id
   * user_id: string - empty string: it will be the User.id
   * name: string - empty string
@@ -117,7 +117,7 @@ Module for Review Model
 * `class Review` includes:
   * Inherit all methods and attributes from BaseModel because it is a subclass of it
 
-  #####Public class attributes
+  ##### Public class attributes
   * place_id: string - empty string: it will be the Place.id
   * user_id: string - empty string: it will be the User.id
   * text: string - empty string
@@ -127,7 +127,7 @@ Module for State Model
 * `class State` includes:
   * Inherit all methods and attributes from BaseModel because it is a subclass of it
 
-  #####Public class attributes
+  ##### Public class attributes
   * name: string - empty string
 
 ### [User](./models/user.py)
@@ -135,7 +135,7 @@ Module for User Model
 *`class User` includes:
   * Inherit all methods and attributes from BaseModel because it is a subclass of it
 
-  #####Public class attributes
+  ##### Public class attributes
   * email: string - empty string
   * password: string - empty string
   * first_name: string - empty string
