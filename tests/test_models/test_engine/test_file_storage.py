@@ -28,6 +28,20 @@ class TestFileStorage(unittest.TestCase):
         objs = new_file.all()
         self.assertIs(type(objs), dict)
 
+    def test_FileStorage_instantiation_with_arg(self):
+        """Test instance with an argument"""
+        with self.assertRaises(TypeError):
+            FileStorage(None)
+
+    def test_storage(self):
+        """Test variable storage"""
+        self.assertIsInstance(models.storage, FileStorage)
+        self.assertEqual(type(models.storage), FileStorage)
+
+    def test_file_path(self):
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+
+
     def test_new(self):
         '''Test new method'''
         new_file = FileStorage()
@@ -96,37 +110,18 @@ class TestFileStorage(unittest.TestCase):
             models.storage.save(None)
 
     def test_reload(self):
-        bm = BaseModel()
-        us = User()
-        st = State()
-        pl = Place()
-        cy = City()
-        am = Amenity()
-        rv = Review()
-        models.storage.new(bm)
-        models.storage.new(us)
-        models.storage.new(st)
-        models.storage.new(pl)
-        models.storage.new(cy)
-        models.storage.new(am)
-        models.storage.new(rv)
-        self.assertIn("BaseModel." + bm.id, models.storage.all().keys())
-        self.assertIn(bm, models.storage.all().values())
-        self.assertIn("User." + us.id, models.storage.all().keys())
-        self.assertIn(us, models.storage.all().values())
-        self.assertIn("State." + st.id, models.storage.all().keys())
-        self.assertIn(st, models.storage.all().values())
-        self.assertIn("Place." + pl.id, models.storage.all().keys())
-        self.assertIn(pl, models.storage.all().values())
-        self.assertIn("City." + cy.id, models.storage.all().keys())
-        self.assertIn(cy, models.storage.all().values())
-        self.assertIn("Amenity." + am.id, models.storage.all().keys())
-        self.assertIn(am, models.storage.all().values())
-        self.assertIn("Review." + rv.id, models.storage.all().keys())
-        self.assertIn(rv, models.storage.all().values())
-
-    def test_reload_no_file(self):
-        self.assertRaises(FileNotFoundError, models.storage.reload())
+        '''Test upload method'''
+        if not path.exists("file.json"):
+            new_file = FileStorage()
+            new_base = BaseModel(id="123", created_at="2021-02-17T22:46:38.86",
+                                 updated_at="2021-02-17T22:46:38.86")
+            new_city = City()
+            new_file.new(new_base)
+            new_file.new(new_city)
+            new_file.save()
+        with open("file.json", "r") as f:
+            obj = json.load(f)
+        self.assertEqual(type(obj), dict)
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
