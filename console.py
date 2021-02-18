@@ -159,6 +159,18 @@ class HBNBCommand(cmd.Cmd):
             elif name_func in functions_parameters:
                 line = args[0] + " " + args[1][index + 2 : -2]
                 functions_parameters[name_func](self, line)
+            elif name_func == "update":
+                parse = ""
+                line = args[1][index + 1 : -1]
+                for letter in line:
+                    if letter != '"' and letter != "'":
+                        parse += letter
+                parse = parse.split(",")
+                line = args[0] + " "
+                for elem in parse:
+                    elem.strip(" ")
+                    line += elem + " "
+                HBNBCommand.do_update(self, line)
             else:
                 print("*** Unknown syntax: {}".format(line))
         except:
