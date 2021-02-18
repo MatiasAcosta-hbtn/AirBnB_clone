@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """Tests File"""
 import unittest
+import models
 from models.user import User
 from models.base_model import BaseModel
+from datetime import datetime
 import pep8
 
 
@@ -23,6 +25,7 @@ class TestUser(unittest.TestCase):
                                         (new.__class__.__name__,
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
+        
 
     def test_User_init(self):
         """Test Init with Kwargs"""
@@ -32,6 +35,33 @@ class TestUser(unittest.TestCase):
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
+        with self.assertRaises(TypeError):
+            User(id=None, created_at=None, updated_at=None)
+
+    def test_no_args_instantiates(self):
+        self.assertEqual(User, type(User()))
+
+    def test_new_instance_stored_in_objects(self):
+        self.assertIn(User(), models.storage.all().values())
+
+    def test_id_is_public_str(self):
+        self.assertEqual(str, type(User().id))
+
+    def test_created_at_is_public_datetime(self):
+        self.assertEqual(datetime, type(User().created_at))
+
+    def test_updated_at_is_public_datetime(self):
+        self.assertEqual(datetime, type(User().updated_at))
+
+    def test_email_is_public_str(self):
+        self.assertEqual(str, type(User.email))
+
+    def test_password_is_public_str(self):
+        self.assertEqual(str, type(User.password))
+
+    def test_first_name_is_public_str(self):
+        self.assertEqual(str, type(User.first_name))
+        
 
     def test_attr(self):
         new = User()
