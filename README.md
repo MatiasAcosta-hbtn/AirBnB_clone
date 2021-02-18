@@ -154,21 +154,21 @@ Module for serializing and deserializing instances and JSON
 
 ## Test Files : Unit Tests for respectively named files
 
-##### [Test Amenity](./tests/test_models/test_amenity.py)
+#### [Test Amenity](./tests/test_models/test_amenity.py) -> Test for the class Amenity
 
-##### [Test Base Model](./tests/test_models/test_base_model.py)
+#### [Test Base Model](./tests/test_models/test_base_model.py) -> Test for the class BaseModel
 
-##### [Test City](./tests/test_models/test_city.py)
+#### [Test City](./tests/test_models/test_city.py) -> Test for the class City
 
-#### [Test Place](./tests/test_models/test_place.py)
+#### [Test Place](./tests/test_models/test_place.py) -> Test for the class 
 
-#### [Test Review](./tests/test_models/test_review.py)
+#### [Test Review](./tests/test_models/test_review.py) -> Test for the class 
 
-#### [Test State](./tests/test_models/test_state.py)
+#### [Test State](./tests/test_models/test_state.py) -> Test for the class 
 
-#### [Test User](./tests/test_models/test_user.py)
+#### [Test User](./tests/test_models/test_user.py) -> Test for the class 
 
-#### [Test FileStorage](./tests/test_models/test_engine/test_file_storage.py)
+#### [Test FileStorage](./tests/test_models/test_engine/test_file_storage.py) -> Test for the class 
 
 
 ## Authors
