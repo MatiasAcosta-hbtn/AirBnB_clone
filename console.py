@@ -110,8 +110,12 @@ class HBNBCommand(cmd.Cmd):
             args = line.split()
             if args[0] not in HBNBCommand.class_list:
                 print("** class doesn't exist **")
+                return False
             if len(args) == 1:
                 print("** instance id missing **")
+                return False
+            if "{}.{}".format(args[0], args[1]) not in objs.keys():
+                print("** no instance found **")
                 return False
             if len(args) == 2:
                 print("** attribute name missing **")
