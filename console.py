@@ -150,7 +150,8 @@ class HBNBCommand(cmd.Cmd):
     def default(self, line):
         """In case to not found the command this func is executed"""
         functions = {"all": HBNBCommand.do_all, "count": HBNBCommand.count}
-        functions_parameters = {"show": HBNBCommand.do_show, "destroy": HBNBCommand.do_destroy}
+        functions_parameters = {"show": HBNBCommand.do_show,
+                                "destroy": HBNBCommand.do_destroy}
         try:
             args = line.split(".")
             name_func = ""
@@ -162,11 +163,11 @@ class HBNBCommand(cmd.Cmd):
             if name_func in functions:
                 functions[name_func](self, args[0])
             elif name_func in functions_parameters:
-                line = args[0] + " " + args[1][index + 2 : -2]
+                line = args[0] + " " + args[1][index + 2:-2]
                 functions_parameters[name_func](self, line)
             elif name_func == "update":
                 parse = ""
-                line = args[1][index + 1 : -1]
+                line = args[1][index + 1:-1]
                 for letter in line:
                     if letter != '"' and letter != "'":
                         parse += letter
