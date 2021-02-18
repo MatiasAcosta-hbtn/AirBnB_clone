@@ -25,7 +25,6 @@ class TestUser(unittest.TestCase):
                                         (new.__class__.__name__,
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
-        #
         self.assertIn(User(), models.storage.all().values())
         self.assertEqual(User, type(User()))
         self.assertEqual(str, type(User().id))
@@ -39,13 +38,19 @@ class TestUser(unittest.TestCase):
         """Test Init with Kwargs"""
         new = User(id="123", created_at="2021-02-17T22:46:38.883036",
                         updated_at="2021-02-17T22:46:38.883036")
-        new2 = User(id="123", name="Matias tu papi")
+        new2 = User(name="Matias tu papi")
+        self.assertFalse(hasattr(new2, "id"))
         self.assertFalse(hasattr(new2, "created_at"))
+        self.assertFalse(hasattr(new2, "updated_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
         with self.assertRaises(TypeError):
             User(id=None, created_at=None, updated_at=None)
+        new3 = User(1234)
+        self.assertEqual(type(new3).__name__, "User")
+        self.assertFalse(hasattr(new3, "1234"))
 
+    
     def test_attr(self):
         """Test attributes"""
         new = User()
@@ -61,6 +66,15 @@ class TestUser(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(User.__doc__)
         self.assertIsNotNone(User.__init__.__doc__)
+        self.assertIsNotNone(User.__str__.__doc__)
+        self.assertIsNotNone(User.save.__doc__)
+        self.assertIsNotNone(User.to_dict.__doc__)
+
+    def test_pep8(self):
+        """test pep8 comes back clean"""
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['models/user.py'])
+        self.assertEqual(result.total_errors, 0, "pep8")
 
     def test_method_str(self):
         """Test method str"""

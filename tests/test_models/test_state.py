@@ -64,6 +64,14 @@ class TestState(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(State.__doc__)
         self.assertIsNotNone(State.__init__.__doc__)
+        self.assertIsNotNone(State.save.__doc__)
+        self.assertIsNotNone(State.to_dict.__doc__)
+
+    def test_pep8(self):
+        """test pep8 comes back clean"""
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['models/State.py'])
+        self.assertEqual(result.total_errors, 0, "pep8")
 
     def test_method_str(self):
         """Test method str"""

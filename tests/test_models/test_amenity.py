@@ -36,6 +36,7 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(new.id, "123")
         with self.assertRaises(TypeError):
             Amenity(id=None, created_at=None, updated_at=None)
+        
 
     def test_public_attr(self):
         """Test if the attributes are publics"""
@@ -55,6 +56,14 @@ class TestAmenity(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(Amenity.__doc__)
         self.assertIsNotNone(Amenity.__init__.__doc__)
+        self.assertIsNotNone(Amenity.save.__doc__)
+        self.assertIsNotNone(Amenity.to_dict.__doc__)
+
+    def test_pep8(self):
+        """test pep8 comes back clean"""
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['models/amenity.py'])
+        self.assertEqual(result.total_errors, 0, "pep8")
 
     def test_method_str(self):
         """Test method str"""

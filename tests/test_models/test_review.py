@@ -70,6 +70,14 @@ class TestReview(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(Review.__doc__)
         self.assertIsNotNone(Review.__init__.__doc__)
+        self.assertIsNotNone(Review.save.__doc__)
+        self.assertIsNotNone(Review.to_dict.__doc__)
+
+    def test_pep8(self):
+        """test pep8 comes back clean"""
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['models/review.py'])
+        self.assertEqual(result.total_errors, 0, "pep8")
 
     def test_method_str(self):
         """Test method str"""

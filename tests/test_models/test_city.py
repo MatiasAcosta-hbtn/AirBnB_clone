@@ -5,7 +5,7 @@ from models.city import City
 from models.base_model import BaseModel
 from datetime import datetime
 import models
-
+import pep8
 
 class TestCity(unittest.TestCase):
     """Test of City class"""
@@ -56,6 +56,14 @@ class TestCity(unittest.TestCase):
         """Check documentation"""
         self.assertIsNotNone(City.__doc__)
         self.assertIsNotNone(City.__init__.__doc__)
+        self.assertIsNotNone(City.save.__doc__)
+        self.assertIsNotNone(City.to_dict.__doc__)
+
+    def test_pep8(self):
+        """test pep8 comes back clean"""
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['models/city.py'])
+        self.assertEqual(result.total_errors, 0, "pep8")
 
     def test_method_str(self):
         """Test method str"""
