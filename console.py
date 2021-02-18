@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             elif (arg[0] + "." + arg[1]) not in objs:
                 print('** no instance found **')
             else:
-                    print(objs[arg[0] + "." + arg[1]])
+                    print(objs["{}.{}".format(arg[0], arg[1]))
 
     def do_all(self, line):
         '''
