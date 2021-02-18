@@ -22,6 +22,15 @@ class TestCity(unittest.TestCase):
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
 
+    def test_City_init(self):
+        """Test Init with Kwargs"""
+        new = City(id="123", created_at="2021-02-17T22:46:38.883036",
+                        updated_at="2021-02-17T22:46:38.883036")
+        new2 = City(id="123", name="Matias tu papi")
+        self.assertFalse(hasattr(new2, "created_at"))
+        self.assertTrue(hasattr(new2, "name"))
+        self.assertEqual(new.id, "123")
+
     def test_attr(self):
         new = City()
         self.assertTrue(hasattr(new, "id"))

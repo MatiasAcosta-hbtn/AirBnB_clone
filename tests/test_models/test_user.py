@@ -24,6 +24,15 @@ class TestUser(unittest.TestCase):
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
 
+    def test_User_init(self):
+        """Test Init with Kwargs"""
+        new = User(id="123", created_at="2021-02-17T22:46:38.883036",
+                        updated_at="2021-02-17T22:46:38.883036")
+        new2 = User(id="123", name="Matias tu papi")
+        self.assertFalse(hasattr(new2, "created_at"))
+        self.assertTrue(hasattr(new2, "name"))
+        self.assertEqual(new.id, "123")
+
     def test_attr(self):
         new = User()
         self.assertTrue(hasattr(new, "id"))
