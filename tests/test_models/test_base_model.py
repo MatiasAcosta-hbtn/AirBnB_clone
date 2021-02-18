@@ -38,5 +38,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(BaseModel.__init__.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
 
+
 if __name__ == "__main__":
     unittest.main()
