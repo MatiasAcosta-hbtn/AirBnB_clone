@@ -4,6 +4,8 @@ import unittest
 from models.review import Review
 from models.base_model import BaseModel
 import pep8
+from datetime import datetime
+import models
 
 
 class TestReview(unittest.TestCase):
@@ -23,6 +25,7 @@ class TestReview(unittest.TestCase):
                                         (new.__class__.__name__,
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
+        self.assertEqual(Review, type(Review()))
 
     def test_Review_init(self):
         """Test Init with Kwargs"""
@@ -32,6 +35,18 @@ class TestReview(unittest.TestCase):
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
+        with self.assertRaises(TypeError):
+            Review(id=None, created_at=None, updated_at=None)
+
+
+    def test_public_attr(self):
+        """Test if the attributes are publics"""
+        self.assertEqual(str, type(Review().id))
+        self.assertEqual(datetime, type(Review().created_at))
+        self.assertEqual(datetime, type(Review().updated_at))
+        self.assertEqual(str, type(Review.place_id))
+        self.assertEqual(str, type(Review.user_id))
+        self.assertEqual(str, type(Review.text))
 
     def test_attr(self):
         new = Review()

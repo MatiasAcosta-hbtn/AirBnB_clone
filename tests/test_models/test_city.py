@@ -3,6 +3,8 @@
 import unittest
 from models.city import City
 from models.base_model import BaseModel
+from datetime import datetime
+import models
 
 
 class TestCity(unittest.TestCase):
@@ -21,6 +23,7 @@ class TestCity(unittest.TestCase):
                                         (new.__class__.__name__,
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
+        self.assertEqual(City, type(City()))
 
     def test_City_init(self):
         """Test Init with Kwargs"""
@@ -30,6 +33,16 @@ class TestCity(unittest.TestCase):
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
+        with self.assertRaises(TypeError):
+            City(id=None, created_at=None, updated_at=None)
+
+    def test_public_attr(self):
+        """Test if the attributes are publics"""
+        self.assertEqual(str, type(City().id))
+        self.assertEqual(datetime, type(City().created_at))
+        self.assertEqual(datetime, type(City().updated_at))
+        self.assertEqual(str, type(City.name))
+        self.assertEqual(str, type(City.state_id))
 
     def test_attr(self):
         new = City()

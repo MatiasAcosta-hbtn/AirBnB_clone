@@ -4,7 +4,8 @@ import unittest
 from models.state import State
 from models.base_model import BaseModel
 import pep8
-
+from datetime import datetime
+import models
 
 class TestState(unittest.TestCase):
     """Test of State class"""
@@ -23,6 +24,19 @@ class TestState(unittest.TestCase):
                                         (new.__class__.__name__,
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
+        self.assertEqual(State, type(State()))
+        #
+    def test_check_in_storage(self):
+        """Check if the instance is in __objects"""
+        self.assertIn(State(), models.storage.all().values())
+    
+    def test_public_attr(self):
+        """Test if the attributes are publics"""
+        self.assertEqual(str, type(State().id))
+        self.assertEqual(datetime, type(State().created_at))
+        self.assertEqual(datetime, type(State().updated_at))
+        self.assertEqual(str, type(State.name))
+
 
     def test_State_init(self):
         """Test Init with Kwargs"""
@@ -32,6 +46,8 @@ class TestState(unittest.TestCase):
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
+        with self.assertRaises(TypeError):
+            State(id=None, created_at=None, updated_at=None)
 
     def test_attr(self):
         new = State()

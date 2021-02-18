@@ -4,6 +4,8 @@ import unittest
 from models.place import Place
 from models.base_model import BaseModel
 import pep8
+from datetime import datetime
+import models
 
 
 class TestPlace(unittest.TestCase):
@@ -23,6 +25,7 @@ class TestPlace(unittest.TestCase):
                                         (new.__class__.__name__,
                                          new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
+        self.assertEqual(Place, type(Place()))
 
     def test_Place_init(self):
         """Test Init with Kwargs"""
@@ -32,6 +35,25 @@ class TestPlace(unittest.TestCase):
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
+        with self.assertRaises(TypeError):
+            Place(id=None, created_at=None, updated_at=None)
+    
+    def test_public_attr(self):
+        """Test if the attributes are publics"""
+        self.assertEqual(str, type(Place().id))
+        self.assertEqual(datetime, type(Place().created_at))
+        self.assertEqual(datetime, type(Place().updated_at))
+        self.assertEqual(str, type(Place.name))
+        self.assertEqual(str, type(Place.city_id))
+        self.assertEqual(str, type(Place.user_id))
+        self.assertEqual(str, type(Place.description))
+        self.assertEqual(int, type(Place.number_rooms))
+        self.assertEqual(int, type(Place.number_bathrooms))
+        self.assertEqual(int, type(Place.max_guest))
+        self.assertEqual(int, type(Place.price_by_night))
+        self.assertEqual(float, type(Place.latitude))
+        self.assertEqual(float, type(Place.longitude))
+        self.assertEqual(list, type(Place.amenity_ids))
 
     def test_attr(self):
         new = Place()

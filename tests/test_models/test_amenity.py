@@ -4,6 +4,8 @@ import unittest
 from models.amenity import Amenity
 from models.base_model import BaseModel
 import pep8
+from datetime import datetime
+import models
 
 
 class TestAmenity(unittest.TestCase):
@@ -23,7 +25,8 @@ class TestAmenity(unittest.TestCase):
                                       (new.__class__.__name__,
                                       new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
-    
+        self.assertEqual(Amenity, type(Amenity()))
+
     def test_Amenity_init(self):
         new = Amenity(id="123", created_at="2021-02-17T22:46:38.883036",
                         updated_at="2021-02-17T22:46:38.883036")
@@ -31,7 +34,15 @@ class TestAmenity(unittest.TestCase):
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
+        with self.assertRaises(TypeError):
+            Amenity(id=None, created_at=None, updated_at=None)
 
+    def test_public_attr(self):
+        """Test if the attributes are publics"""
+        self.assertEqual(str, type(Amenity().id))
+        self.assertEqual(datetime, type(Amenity().created_at))
+        self.assertEqual(datetime, type(Amenity().updated_at))
+        self.assertEqual(str, type(Amenity.name))
 
     def test_attr(self):
         new = Amenity()

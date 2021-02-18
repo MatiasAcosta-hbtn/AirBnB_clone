@@ -4,6 +4,7 @@ import unittest
 from models.base_model import BaseModel
 import pep8
 from datetime import datetime
+import models
 
 
 class TestBaseModel(unittest.TestCase):
@@ -20,6 +21,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(new, new2)
         self.assertNotEqual(new.id, new2.id)
         self.assertEqual(type(new.id), str)
+        self.assertEqual(BaseModel, type(BaseModel()))
 
     def test_BaseModel_init(self):
         new = BaseModel(id="123", created_at="2021-02-17T22:46:38.883036",
@@ -28,6 +30,14 @@ class TestBaseModel(unittest.TestCase):
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
+        with self.assertRaises(TypeError):
+            BaseModel(id=None, created_at=None, updated_at=None)
+
+    def test_public_attr(self):
+        """Test if the attributes are publics"""
+        self.assertEqual(str, type(BaseModel().id))
+        self.assertEqual(datetime, type(BaseModel().created_at))
+        self.assertEqual(datetime, type(BaseModel().updated_at))
 
     def test_attr(self):
         """Test Attributes of the instance"""
