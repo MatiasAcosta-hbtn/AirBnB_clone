@@ -40,5 +40,32 @@ class TestState(unittest.TestCase):
         self.assertIsNotNone(State.__doc__)
         self.assertIsNotNone(State.__init__.__doc__)
 
+    def test_method_str(self):
+        """Test method str"""
+        new = State()
+        self.assertEqual(new.__str__(), "[{}] ({}) {}".format
+                                        (new.__class__.__name__,
+                                         new.id, new.__dict__))
+        self.assertTrue(type(new.__str__()), str)
+        self.assertTrue(len(new.__str__()))
+
+    def test_to_dict(self):
+        new = State()
+        dict_new = new.to_dict()
+        self.assertNotEqual(new.__dict__, new.to_dict())
+        self.assertEqual(type(dict_new["created_at"]), str)
+        self.assertEqual(type(dict_new["updated_at"]), str)
+        self.assertTrue("__class__" in dict_new)
+        self.assertEqual(dict_new["__class__"],  "State")
+
+    def test_save(self):
+        new = State()
+        created = new.updated_at
+        new.save()
+        updated = new.updated_at
+        self.assertNotEqual(updated, created)
+        self.assertGreater(updated, created)
+
+
 if __name__ == "__main__":
     unittest.main()
