@@ -1,8 +1,6 @@
 ![](https://camo.githubusercontent.com/9ebbf60e208b031d4dcf7db6ffc19fe0339d0ff3/68747470733a2f2f692e6962622e636f2f64354e38354e682f68626e622e706e67)
 
-<h1 align ="center"> AIR BNB CLONE </h1><br>
-
-<h1 align ="center"> AIR BNB CLONE </h1><br>
+<h1 align ="center"> AIRBNB CLONE </h1><br>
 
 # AirBnb Clone Console
 A Command Interpreter to Manage AirBnb objects.
@@ -29,7 +27,96 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 * `help`
   * Usage: `help`
   * Documentation/help provided
+  
+  Example
+  
+  ```
+  $ ./console.py
+  hbnb) help 
+
+  Documented commands (type help <topic>):
+  ========================================
+  EOF  all  create  destroy  help  quit  show  update
+  ```
+
 * `create`
+  * Usage: `create <Class Name>`
+  * Creates a new instance of a class, saves it (to the JSON file) and prints the `id`
+
+  Example:
+
+  ```
+  $ ./console.py
+  (hbnb) create User
+  e1fe6e2c-8d16-4997-8b46-d355fc4158a7
+  (hbnb) 
+  ```
+
+* `show`
+  * Usage: `show <Class Name> <ID Instance>`
+  * Prints the string representation of an instance based on the class name and `id`
+
+  Example:
+
+  ```
+  $ ./console.py
+  (hbnb) create User
+  e1fe6e2c-8d16-4997-8b46-d355fc4158a7
+  (hbnb) show User e1fe6e2c-8d16-4997-8b46-d355fc4158a7
+  [User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 'created_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 450042), 'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}
+  ```
+
+  
+* `destroy`
+  * Usage: `destroy <Class Name> <ID Instance>`
+  * Deletes an instance based on the class name and `id` (save the change into the JSON file). 
+
+  Example:
+
+  ```
+  $ ./console.py
+  (hbnb) create Review
+  1d5adc89-36dc-4325-8e84-fa8443a987a9
+  (hbnb) destroy Review 1d5adc89-36dc-4325-8e84-fa8443a987a9
+  (hbnb) 
+  ```
+
+* `all`
+  * Usage: `all` or `<Class Name> all`
+  * Prints all string representation of all instances based or not on the class name.
+
+  Example:
+
+  ```
+  $ ./console.py
+  (hbnb) all
+  ["[User] (13cedb31-39b2-4ef9-8965-28957886df86) {'id': '13cedb31-39b2-4ef9-8965-28957886df86', 'created_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933490), 'updated_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933519)}", "[User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 'created_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 450042), 'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}", "[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d', 'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393), 'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
+  (hbnb) all Review
+  ["[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d', 'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393), 'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
+  ```
+
+* `update`
+  * Usage: `update <Class Name> <Id Instance> <Attribute Name> <Value>`
+  * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
+
+  ```
+  $ ./console.py
+  (hbnb) all
+  []
+  (hbnb) create User
+  b54c1240-4b9b-4459-86d6-0a77288cf5ef
+  (hbnb) all
+  ["[User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef) {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999)}"]
+  (hbnb) update User b54c1240-4b9b-4459-86d6-0a77288cf5ef name "MatiasTuPapi"
+  (hbnb) show User b54c1240-4b9b-4459-86d6-0a77288cf5ef
+  [User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef) {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 'name': 'MatiasTuPapi'}
+  ```
+
+## Handle Errors in the Console
+
+#### When an error occurs, the console will handle it and give a corresponding message
+
+* `create Errors`
   * Usage: `create <Class Name>`
   * Example: `create User`
   * Creates a new instance of a class, saves it (to the JSON file) and prints the `id`
@@ -49,8 +136,6 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   * Usage: `update <Class Name> <Id Instance> <Attribute Name> <Value>`
   * Example: `update User 1234-133214-32 Name "Matias tu papi"`
   * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
-
-## Handle Errors in the Console
 
 ### Files
 
