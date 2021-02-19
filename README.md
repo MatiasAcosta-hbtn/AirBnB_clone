@@ -90,7 +90,12 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   ```
   $ ./console.py
   (hbnb) all
-  ["[User] (13cedb31-39b2-4ef9-8965-28957886df86) {'id': '13cedb31-39b2-4ef9-8965-28957886df86', 'created_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933490), 'updated_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933519)}", "[User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 'created_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 450042), 'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}", "[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d', 'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393), 'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
+  ["[User] (13cedb31-39b2-4ef9-8965-28957886df86) {'id': '13cedb31-39b2-4ef9-8965-28957886df86', 
+  'created_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933490), 
+  'updated_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933519)}", "[User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 
+  'created_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 450042), 
+  'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}", "[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d', 'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393),
+   'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
   (hbnb) all Review
   ["[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d', 'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393), 'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
   ```
@@ -106,36 +111,111 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   (hbnb) create User
   b54c1240-4b9b-4459-86d6-0a77288cf5ef
   (hbnb) all
-  ["[User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef) {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999)}"]
+  ["[User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef) 
+  {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 
+  'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999)}"]
   (hbnb) update User b54c1240-4b9b-4459-86d6-0a77288cf5ef name "MatiasTuPapi"
   (hbnb) show User b54c1240-4b9b-4459-86d6-0a77288cf5ef
-  [User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef) {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 'name': 'MatiasTuPapi'}
+  [User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef)
+   {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970),
+    'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 'name': 'MatiasTuPapi'}
   ```
 
 ## Handle Errors in the Console
 
-#### When an error occurs, the console will handle it and give a corresponding message
+### When an error occurs, the console will handle it and give a corresponding message
 
-* `create Errors`
-  * Usage: `create <Class Name>`
-  * Example: `create User`
-  * Creates a new instance of a class, saves it (to the JSON file) and prints the `id`
-* `show`
-  * Usage: `show <Class Name> <ID Instance>`
-  * Example: `show User 1345-2144w2132`
-  * Prints the string representation of an instance based on the class name and `id`
-* `destroy`
-  * Usage: `destroy <Class Name> <ID Instance>`
-  * Example: `destroy User 1234-133213-4452e2`
-  * Deletes an instance based on the class name and `id` (save the change into the JSON file). 
-* `all`
-  * Usage: `all`
-  * Example: `User all`
-  * Prints all string representation of all instances based or not on the class name.
-* `update`
-  * Usage: `update <Class Name> <Id Instance> <Attribute Name> <Value>`
-  * Example: `update User 1234-133214-32 Name "Matias tu papi"`
-  * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
+### Create Errors
+
+ * If the class name is missing, print ** class name missing ** 
+ * If the class name doesn’t exist, print ** class doesn't exist **
+
+  ```
+  $ ./console.py
+  (hbnb) create
+  ** class name missing **
+  (hbnb) create MyModel
+  ** class doesn't exist **
+  ```
+ 
+### Show Errors
+
+ * If the class name is missing, print ** class name missing **
+ * If the class name doesn’t exist, print ** class doesn't exist **
+ * If the id is missing, print ** instance id missing **
+ * If the instance of the class name doesn’t exist for the id, print ** no instance found **
+
+ ```
+  $ ./console.py
+  (hbnb) show
+  ** class name missing **
+  (hbnb) show MyModel
+  ** class doesn't exist **
+  (hbnb) show BaseModel
+  ** instance id missing **
+  (hbnb) show BaseModel 12345678
+  ** no instance found **
+ ```
+
+### Destroy Errors
+
+ * If the class name is missing, print ** class name missing **
+ * If the class name doesn’t exist, print ** class doesn't exist **
+ * If the id is missing, print ** instance id missing **
+ * If the instance of the class name doesn’t exist for the id, print ** no instance found **
+
+ ```
+ $ ./console.py
+ (hbnb) destroy
+ ** class name missing **
+ (hbnb) destroy NoModel
+ ** class doesn't exist **
+ (hbnb) destroy User
+ ** instance id missing **
+ (hbnb) destroy User 1245
+ ** no instance found **
+```
+
+### all Errors
+
+ * If the class name doesn’t exist, print ** class doesn't exist **
+
+ ```
+ $ ./console.py
+ (hbnb) all AnyModel
+ ** class doesn't exist **
+ ``` 
+
+### update Errors
+
+* Usage `update <class name> <id> <attribute name> "<attribute value>`
+
+* If the class name is missing, print ** class name missing ** 
+* If the class name doesn’t exist, print ** class doesn't exist **
+* If the id is missing, print ** instance id missing **
+* If the instance of the class name doesn’t exist for the id, print ** no instance found **
+* If the attribute name is missing, print ** attribute name missing **
+* If the value for the attribute name doesn’t exist, print ** value missing **
+
+```
+$ ./console.py
+(hbnb) all
+["[User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef)
+ {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 
+ 'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 'name': 'MatiasTuPapi'}"]
+(hbnb) update
+** class name missing **
+(hbnb) update Buho
+** class doesn't exist **
+(hbnb) update User
+** instance id missing **
+(hbnb) update User 1245
+** no instance found **
+(hbnb) update User b54c1240-4b9b-4459-86d6-0a77288cf5ef
+** attribute name missing **
+(hbnb) update User b54c1240-4b9b-4459-86d6-0a77288cf5ef name2
+** value missing **
+```
 
 ### Files
 
