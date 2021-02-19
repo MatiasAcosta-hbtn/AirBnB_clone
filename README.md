@@ -63,7 +63,9 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   (hbnb) create User
   e1fe6e2c-8d16-4997-8b46-d355fc4158a7
   (hbnb) show User e1fe6e2c-8d16-4997-8b46-d355fc4158a7
-  [User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 'created_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 450042), 'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}
+  [User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 
+  'created_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 450042),
+  'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}
   ```
 
   
@@ -78,7 +80,8 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   (hbnb) create Review
   1d5adc89-36dc-4325-8e84-fa8443a987a9
   (hbnb) destroy Review 1d5adc89-36dc-4325-8e84-fa8443a987a9
-  (hbnb) 
+  (hbnb) show Review 1d5adc89-36dc-4325-8e84-fa8443a987a9
+  ** no instance found **
   ```
 
 * `all`
@@ -92,12 +95,17 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   (hbnb) all
   ["[User] (13cedb31-39b2-4ef9-8965-28957886df86) {'id': '13cedb31-39b2-4ef9-8965-28957886df86', 
   'created_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933490), 
-  'updated_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933519)}", "[User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 
+  'updated_at': datetime.datetime(2021, 2, 18, 21, 23, 35, 933519)}", 
+  "[User] (e1fe6e2c-8d16-4997-8b46-d355fc4158a7) {'id': 'e1fe6e2c-8d16-4997-8b46-d355fc4158a7', 
   'created_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 450042), 
-  'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}", "[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d', 'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393),
+  'updated_at': datetime.datetime(2021, 2, 18, 23, 1, 31, 451723)}", 
+  "[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d',
+   'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393),
    'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
   (hbnb) all Review
-  ["[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d', 'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393), 'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
+  ["[Review] (c4a0c5e5-e761-4674-8201-878cf83a7a5d) {'id': 'c4a0c5e5-e761-4674-8201-878cf83a7a5d',
+  'created_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274393), 
+  'updated_at': datetime.datetime(2021, 2, 18, 23, 3, 36, 274633)}"]
   ```
 
 * `update`
@@ -112,13 +120,16 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   b54c1240-4b9b-4459-86d6-0a77288cf5ef
   (hbnb) all
   ["[User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef) 
-  {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 
+  {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 
+  'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 
   'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999)}"]
   (hbnb) update User b54c1240-4b9b-4459-86d6-0a77288cf5ef name "MatiasTuPapi"
   (hbnb) show User b54c1240-4b9b-4459-86d6-0a77288cf5ef
   [User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef)
-   {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970),
-    'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 'name': 'MatiasTuPapi'}
+   {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 
+   'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970),
+    'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 
+    'name': 'MatiasTuPapi'}
   ```
 
 ## Handle Errors in the Console
@@ -176,7 +187,7 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
  ** no instance found **
 ```
 
-### all Errors
+### All Errors
 
  * If the class name doesn’t exist, print ** class doesn't exist **
 
@@ -186,7 +197,7 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
  ** class doesn't exist **
  ``` 
 
-### update Errors
+### Update Errors
 
 * Usage `update <class name> <id> <attribute name> "<attribute value>`
 
@@ -201,8 +212,10 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 $ ./console.py
 (hbnb) all
 ["[User] (b54c1240-4b9b-4459-86d6-0a77288cf5ef)
- {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 
- 'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 'name': 'MatiasTuPapi'}"]
+ {'id': 'b54c1240-4b9b-4459-86d6-0a77288cf5ef', 
+ 'created_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250970), 
+ 'updated_at': datetime.datetime(2021, 2, 18, 23, 9, 35, 250999), 
+ 'name': 'MatiasTuPapi'}"]
 (hbnb) update
 ** class name missing **
 (hbnb) update Buho
