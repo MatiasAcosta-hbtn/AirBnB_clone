@@ -1,6 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     margin:0;
     padding: 0;
     color: #484848;
@@ -14,4 +15,5 @@ body{
     max-width: 1000px;
     margin-top: 30px;    
     margin-bottom: 30px;
+    flex:1;
 }
