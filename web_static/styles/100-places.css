@@ -125,18 +125,21 @@ article .header{
 .user{
     margin-top: 15px;
 }
-.user .owner{
-    font-weight:bold;
-}
 
 .description{
     margin-top: 5px;
 }
 
 .title{
-    margin-top: 40px;
+    margin-top: 25px;
     font-size:16px;
     border-bottom: 1px solid #DDDDDD;
+}
+
+.reviews{
+    box-sizing: border-box;
+    margin-top:0;
+    padding-top:0;
 }
 
 .reviews .from{
@@ -148,4 +151,39 @@ article .header{
 .reviews .review{
     font-size:12px;
     margin-left: -40px;
+}
+
+article .amenities{
+    width: 100%;
+    margin-bottom:0;
+    padding-bottom: 0;
+}
+
+.amenities-list{
+    list-style: none;
+    padding-left: 0;
+}
+.TV, .pet-friendly, .wifi{
+    position: relative;
+    padding-left:20px
+}
+.TV::before, .pet-friendly::before, .wifi::before{
+   content: '';
+   width: 15px;
+   height: 15px;
+   position: absolute;
+   background-image: url("/web_static/images/icon_tv.png");
+   background-size: cover;
+   background-position: center;
+   left: 0;
+   top: 50%;
+   transform: translateY(-50%);
+}
+.wifi::before{
+   content: '';
+   background-image: url("/web_static/images/icon_wifi.png");
+}
+.pet-friendly::before{
+   content: '';
+   background-image: url("/web_static/images/icon_pets.png");
 }
