@@ -27,8 +27,15 @@ article{
 article .header{
     display:flex;
     justify-content: space-evenly;
-    
 }
+
+.places h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
 
 .price_by_night{
     margin-left: auto;
