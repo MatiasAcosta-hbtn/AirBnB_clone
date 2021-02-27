@@ -133,11 +133,8 @@ article .header{
     margin-top: 5px;
 }
 
-.reviews{
-    margin-top: 40px;
-}
-
 .title{
+    margin-top: 40px;
     font-size:16px;
     border-bottom: 1px solid #DDDDDD;
 }
